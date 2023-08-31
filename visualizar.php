@@ -52,7 +52,7 @@ as páginas de atualização e exclusão. -->
                  <p><b>Id: </b> <?=$aluno["id"]?>  </p>
                  <p><b>Primeira Nota: </b> <?=$aluno['primeira']?></p>
                  <p><b>Segunda Nota: </b> <?=$aluno['segunda']?></p>
-                 <p><b>Média: <?=mediaNotas($aluno['primeira'], $aluno['segunda'])?></b></p>
+                 <p><b>Média: <?=$aluno['primeira'] + $aluno['segunda'] / 2?></b></p>
                  <p><b>Situação: </b></p>
                  <h4></h4>
                  <td>
