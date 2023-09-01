@@ -1,3 +1,6 @@
+* { box-sizing: border-box; }
+
+
 html { font-size: 16px;}
 body { font-family: "Segoe UI", Arial, sans-serif; }
 
@@ -16,3 +19,4 @@ a {
 h2 a { font-size: 0.9rem;}
 
 a:hover, a:focus { text-decoration: underline;}
+

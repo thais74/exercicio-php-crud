@@ -1,6 +1,8 @@
 <?php
 
 require_once "src/funcoes-alunos.php";
+require_once "src/funcoes-utilitarias.php";
+
 $listaDeAlunos = lerAlunos($conexao);
 ?>
 
@@ -11,30 +13,16 @@ $listaDeAlunos = lerAlunos($conexao);
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Lista de alunos - Exercício CRUD com PHP e MySQL</title>
 <link href="css/style.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-...">
+
 <style>
     * { box-sizing: border-box; }
-    .alunos {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 16px;
-        width: 80%;
-        margin: auto;
-
-    }
-    .aluno {
-            font-family: 'SEGOE UI';
-            background-color: pink;
-            padding: 1rem;
-            width: 49%;
-            box-shadow: black 3px 3px;
-        }
-
-    
 
 </style>
 </head>
 <body>
 <div class="container">
+    <br>
     <h1>Lista de alunos</h1>
     <hr>
     <p><a href="inserir.php">Inserir novo aluno</a></p>
@@ -44,34 +32,50 @@ para exibir a relação de alunos existentes no banco de dados.
 
 Obs.: não se esqueça de criar também os links dinâmicos para
 as páginas de atualização e exclusão. -->
-    <div class = "alunos" >
-        <?php foreach($listaDeAlunos as $aluno) { ?>
-            <article class="aluno">
-               <tr>
-                 <h3><b>Nome do Aluno: </b> <?=$aluno["nome"]?> </h3> 
-                 <p><b>Id: </b> <?=$aluno["id"]?>  </p>
-                 <p><b>Primeira Nota: </b> <?=$aluno['primeira']?></p>
-                 <p><b>Segunda Nota: </b> <?=$aluno['segunda']?></p>
-                 <p><b>Média: <?=$aluno['primeira'] + $aluno['segunda'] / 2?></b></p>
-                 <p><b>Situação: </b></p>
-                 <h4></h4>
-                 <td>
-                    
-        <a href="atualizar.php?id=<?=$aluno["id"]?>">Editar</a>
 
-                 <a class="excluir" href="excluir.php?id=<?=$aluno["id"]?>">Excluir</a>
-                    </td>
-                </tr> 
-            </article>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Nome do Aluno:  </th>
+            <th>1º Nota:  </th>
+            <th>2º Nota:  </th>
+            <th>Média:  </th>
+            <th>Situação: </th>
+            <th>Opções </th>
+        </tr>
+    </thead>
+ <?php foreach($listaDeAlunos as $aluno) { ?>
+    <tr>
+        <td> </b> <?=$aluno["nome"]?> </td>  
+         <td> <?=formatarNota($aluno['primeira'])?></td>
+         <td> <?=formatarNota($aluno['segunda'])?></td>
+         <td> <?=contarMedia($aluno['primeira'], $aluno['segunda'])?></td>
+         <td> <?=verificaSituacao($aluno['primeira'], $aluno['segunda'])?></td>
+         <h4></h4>
+
+         <td>
+        <a href="atualizar.php?id=<?=$aluno["id"]?>">Editar</a>
+         <a class="excluir" href="excluir.php?id=<?=$aluno["id"]?>">Excluir</a>
+        </td>
+    </tr>
+               
+            
+                 
+            
                     
-        <?php } ?>
-    </div>
-    
+            <?php } ?>  
+</table>
+
+          
+             
+
 
     <p><a href="index.php">Voltar ao início</a></p>
 </div>
 
 <script src="js/exclusao.js"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
 </body>
 </html>
