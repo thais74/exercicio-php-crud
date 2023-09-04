@@ -1,3 +1,4 @@
+<!-- funcoes-utilitarias.php -->
 <?php
 function contarMedia(int $nota1, $nota2){
     $media = ($nota1 + $nota2) /2;
@@ -9,15 +10,15 @@ function formatarNota(float $valor):string {
     return $valorFormatado;
 }
 
-function verificaSituacao($nota1, $nota2){
-    $situacao = ($nota1 + $nota2) / 2;
-    if ($situacao >= 7){
-        return "Aprovado!";
-    } elseif($situacao >= 5){
-        return "Em recuperação!";
-    } else {
-        return "Reprovado!";
+function verificaSituacao(float $media):string{
+    if($media <= 5){
+        $situacao = "Reprovado";
+    } elseif($media <= 7){
+        $situacao = "Recuperação";
+    } else{
+       $situacao = "Aprovado";
     }
+    return $situacao;
 }
 
 ?>

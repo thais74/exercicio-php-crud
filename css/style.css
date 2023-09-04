@@ -20,3 +20,17 @@ h2 a { font-size: 0.9rem;}
 
 a:hover, a:focus { text-decoration: underline;}
 
+.aprovado {
+    font-weight: bold;
+    background-color: rgb(217, 255, 160); /* You can change this color based on the situation */
+}
+
+.reprovado{
+    font-weight: bold;
+    background-color: rgb(255, 162, 162);
+}
+
+.recuperacao{
+    font-weight: bold;
+    background-color: rgb(255, 196, 154);
+}
