@@ -68,7 +68,7 @@ as páginas de atualização e exclusão. -->
     <td><b><?= $aluno["nome"] ?></b></td>
     <td><?= formatarNota($aluno['primeira']) ?></td>
     <td><?= formatarNota($aluno['segunda']) ?></td>
-    <td><?= contarMedia($aluno['primeira'], $aluno['segunda']) ?></td>
+    <td><?= formatarNota(contarMedia($aluno['primeira'], $aluno['segunda'])) ?></td>
     <td 
     
     <?php if(verificaSituacao($media) == "Aprovado"){
